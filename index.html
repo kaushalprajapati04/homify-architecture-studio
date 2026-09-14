@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homify Architecture Studio — AI-Powered Architectural Design</title>
+    <meta name="description" content="Create intelligent architectural floor plans in 2D with the power of AI." />
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+    <script>
+      (function() {
+        if (typeof window === 'undefined') return;
+        var _rep = window.reportAllChanges;
+        function wrap(fn) {
+          if (typeof fn !== 'function') return fn;
+          return function(m) {
+            var now = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+            if (!m || typeof m !== 'object') {
+              m = { startTime: now, entries: [{ startTime: now, duration: 0 }] };
+            } else {
+              if (m.startTime === undefined) m.startTime = now;
+              if (!Array.isArray(m.entries)) {
+                m.entries = [{ startTime: m.startTime, duration: 0 }];
+              } else if (m.entries.length === 0) {
+                m.entries = [{ startTime: m.startTime, duration: 0 }];
+              } else if (m.entries[0] && m.entries[0].startTime === undefined) {
+                m.entries[0].startTime = m.startTime;
+              }
+            }
+            return fn.apply(this, arguments);
+          };
+        }
+        if (_rep) window.reportAllChanges = wrap(_rep);
+        try {
+          Object.defineProperty(window, 'reportAllChanges', {
+            configurable: true,
+            enumerable: true,
+            get: function() { return _rep; },
+            set: function(v) { _rep = wrap(v); }
+          });
+        } catch(e) {}
+        window.addEventListener('error', function(e) {
+          var msg = e.message || (e.error && e.error.message) || '';
+          var stack = (e.error && e.error.stack) || '';
+          if ((msg.indexOf("reading 'startTime'") !== -1 || msg.indexOf("Cannot read properties of undefined (reading 'startTime')") !== -1) &&
+              (stack.indexOf('reportAllChanges') !== -1 || msg.indexOf('reportAllChanges') !== -1)) {
+            e.preventDefault();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
